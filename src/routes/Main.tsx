@@ -9,7 +9,7 @@ export default function Main() {
           <div className="rounded-full mix-blend-darken -right-5  w-80 absolute lg:-right-9 h-80 md:w-[21rem] md:h-[21rem] lg:w-96 lg:h-96 bg-purple-700"></div>
           <div className="rounded-full mix-blend-darken absolute -left-5 lg:-left-9 w-80 h-80 md:w-[21rem] md:h-[21rem] lg:w-96 lg:h-96 bg-pink-500"></div>
         </article>
-        <h1 className="font-serif mb-44 md:mb-52 lg:mb-28 drop-shadow-2xl shadow-black w-48 text-white  md:text-balance  z-50 text-4xl md:w-80 md:text-6xl">
+        <h1 className="font-serif mb-44 md:mb-52 lg:mb-28 drop-shadow-2xl shadow-black w-48 text-white  md:text-balance  -z-10 text-4xl md:w-80 md:text-6xl">
           Streamline Your Tasks, Elevate Your Life.
         </h1>
       </section>
