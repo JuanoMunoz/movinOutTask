@@ -4,11 +4,11 @@ export type RegisterFormType = {
   password: string;
 };
 export enum API {
-  API_ROOT = "https://movinout-5eqc.onrender.com/api/v1/",
+  API_ROOT = "https://movin-out-api.vercel.app/api/v1/",
 }
 export type ApiResponse = {
   status: number;
-  items: { msg: string; user?: Register; todo?: TODO };
+  items: { msg: string; user?: Register; todo?: TODO, token?: string };
 };
 type Register = {
   id?: string;
@@ -16,6 +16,10 @@ type Register = {
   password: string;
   nickname: string;
   isAdmin: boolean;
+};
+export type LoginFormType = {
+  email: string;
+  password: string;
 };
 interface TODO {
   id: string;

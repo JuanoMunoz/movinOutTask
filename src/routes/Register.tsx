@@ -1,6 +1,8 @@
 import Nav from "../components/Nav";
 import { Link } from "react-router-dom";
 import RegisterForm from "../components/RegisterForm";
+import { ToastContainer } from "react-toastify";
+import Footer from "../components/Footer";
 export default function Register() {
   return (
     <>
@@ -29,6 +31,8 @@ export default function Register() {
           <RegisterForm></RegisterForm>
         </section>
       </section>
+      <Footer></Footer>
+      <ToastContainer />
     </>
   );
 }

@@ -7,8 +7,7 @@ export default function RegisterForm() {
   const [userRegister, setUserRegister] = useState<RegisterFormType | null>(
     null
   );
-  console.log(userRegister);
-  const { register, handleSubmit } = useForm<RegisterFormType>();
+  const { register, formState: { errors }, handleSubmit } = useForm<RegisterFormType>();
   useRegisterToApi(userRegister);
   const fillUserRegister = (data: RegisterFormType) => {
     setUserRegister(data);
@@ -24,7 +23,7 @@ export default function RegisterForm() {
           account
         </span>
       </h3>
-      <div className="flex flex-col justify-center gap-3  items-center">
+      <div className="flex flex-col  justify-center gap-2  items-center">
         <input
           id="nickname"
           className=" text-lg h-8 md:h-12 focus:outline-none border-4 p-3 rounded-lg w-full border-purple-400"
@@ -34,13 +33,19 @@ export default function RegisterForm() {
             required: true,
           })}
         />
+        {errors.nickname?.type == 'required' && <p className="  self-start  text-sm italic text-red-600">the username is required*</p>}
         <input
           id="email"
           className="text-lg h-8 md:h-12 focus:outline-none border-4 p-3 rounded-lg w-full border-purple-400"
-          type="email"
+          type="text"
           placeholder="email@mail.com..."
-          {...register("email")}
+          {...register("email", {
+            required: true,
+            pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+          })}
         />
+        {errors.email?.type == 'required' && <p className=" self-start  text-sm italic text-red-600">the email is required*</p>}
+        {errors.email?.type == 'pattern' && <p className="  self-start  text-sm italic text-red-600">please provide a valid email</p>}
         <input
           id="password"
           className="text-lg h-8 md:h-12 focus:outline-none border-4 p-3 rounded-lg w-full  border-purple-400"
@@ -50,6 +55,7 @@ export default function RegisterForm() {
             required: true,
           })}
         />
+        {errors.password?.type == 'required' && <p className=" self-start  text-sm italic text-red-600">the password is required*</p>}
         <button
           type="submit"
           className="w-full flex justify-center items-center rounded-lg md:mt-5 text-lg md:py-3 py-2 bg-purple-950 text-white hover:bg-purple-800 gap-2 transition-colors duration-300 font-bold font-serif"
